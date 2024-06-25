@@ -1,0 +1,68 @@
+Autor: Kamil Szymczak
+
+Pakiet testów do zadania MDIV
+
+Uwaga: nie ma gwarancji, że testy są poprawne, ani
+że program przechodzący wszystkie testy są w 100%
+poprawne. Niniejsze testy mają być pomocą przy
+rozwiązywaniu zadania.
+
+Pakiet zawiera różne programy testujące poprawność
+oraz szybkość działania implementacji funkcji mdiv.
+
+Aby rozpocząć testowanie należy przenieść ten folder
+(po rozpakowaniu powinien mięc nazwę test) do folderu
+ze swoim projektem. Istotne jest, aby plik mdiv.asm
+znajdował się w nadkatalogu katalogu test (inaczej
+tester nie zadziała).
+
+Następnie uruchamiamy skrypt tester.sh znajdujący się
+w katalogu test. Uruchomienie tego skryptu bez argu-
+mentów spowoduje wyświetlenie instrukcji obsługi.
+Przy uruchomieniu możemy podać jeden z następujących
+argumentów:
+
+run_example     - Uruchamia program na testach przykładowych
+                  (Uwaga plik mdiv_example.c powinien znajdować
+                  się w tym samym folderze co mdiv.asm).
+
+val             - Dokonuje walidacji poprawności funkcji
+                  mdiv na manualnie przygotowanym zbiorze
+                  testów. Sprawdza także przepełnienia.
+
+val_rand        - Dokonuje walidacji poprawności funkcji
+                  mdiv na losowo generowanych testach.
+                  Nie sprawdza przepełnień.
+
+measure_et      - Mierzy czas działania funkcji na zestawie
+                  manualnie przygotowanych testów. Uwaga:
+                  to polecenie nie sprawdza poprawności
+                  programu.
+
+Przykładowe uruchomienie programu może więc wyglądać tak:
+
+./tester.sh val_rand
+
+Powyższe polecenia kompilują program i umieszczają
+skompilowane pliki w ../build. Polecenia val oraz
+val_rand tworzą w tym folderze plik wykonywalny
+mdiv_tester. Możemy także stworzyć ten program
+własnoręcznie, korzystając ze skryptu comp_tester.sh,
+który tworzy plik wykonywalny mdiv_tester w katalogu
+../build.
+
+Jeśli polecenie val_rand lub val rand znajdzie test,
+na którym program daje niepoprawną odpowiedź, wówczas
+program zakończy wykonywanie, a test będzie znajdował
+się w pliku test.in. Poprawny output będzie w pliku
+b.out, natomiast output naszego programu będzie w pliku
+a.out. Wówczas możemy uruchomić nasz program na tym
+teście ponownie, pisząc
+
+../build/mdiv_tester < test.in
+
+a po naprawieniu znalezionych usterek, możemy skompilo-
+wać nasz program i ponownie go uruchomić, pisząc
+
+./comp_tester.sh
+../build/mdiv_tester < test.in
